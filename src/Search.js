@@ -14,8 +14,11 @@ class Search extends Component {
     books: PropTypes.array.isRequired,
     updateShelf: PropTypes.func.isRequired
   };
+
+
   updateQuery = query => {
     this.setState({ query: query });
+    //chech  if query is valid and not empty string
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
         console.log(books);
@@ -53,6 +56,7 @@ class Search extends Component {
 
         <div className="search-books-results">
           <div className="books-grid">
+            { /*if searchedbooks is valid , iterate searchedbooks array using map method */ }
             {searchedBooks.length > 0 &&
               searchedBooks.map(book => (
                 <Book
@@ -64,7 +68,7 @@ class Search extends Component {
               ))}
           </div>
         </div>
-        <div className="no-result" />
+        <div/>
       </div>
     );
   }

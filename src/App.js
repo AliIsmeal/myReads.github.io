@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
       });
     });
   }
-  //update shelf
+  //update shelves
   updateShelf = (Book, updatedhelf) => {
     BooksAPI.update(Book, updatedhelf).then(res => {
       const updatedBooks = [
