@@ -21,7 +21,7 @@ class ListOfBooks extends Component {
       const read = books.filter(book => book.shelf === "read");
       const shelfsArray = [currentlyReading, wantToRead, read];
 
-      return shelfsArray.map(shelf => {
+      return shelfsArray.map((shelf,index) => {
         const shelfTitle =
           shelf === currentlyReading
             ? "Currently Reading"
@@ -31,11 +31,11 @@ class ListOfBooks extends Component {
                 ? "Read"
                 : "None";
         return (
-          <div className="list-books-content">
+          <div className="list-books-content" key={index}>
             <div className="bookshelf">
               <h2 className="bookshelf-title"> {shelfTitle}</h2>
               <div className="bookshelf-books">
-                <BookShelf  books={shelf} updateShelf={updateShelf} />
+                <BookShelf books={shelf} updateShelf={updateShelf} />
               </div>
             </div>
           </div>

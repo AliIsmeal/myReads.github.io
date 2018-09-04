@@ -21,6 +21,7 @@ class Book extends Component {
             />
 
             <BookShelfChanger
+              key={book.id}
               book={book}
               books={books}
               updateShelf={updateShelf}
