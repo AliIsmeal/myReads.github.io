@@ -1,20 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
+import debounce from "lodash.debounce";
 import Book from "./Book";
 import PropTypes from "prop-types";
 
 class Search extends Component {
-  state = {
-    query: "",
-    searchedBooks: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      searchedBooks: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.emitChangeDebounce = debounce(this.emitChange, 1000);
+  }
 
   static propTypes = {
     books: PropTypes.array.isRequired,
     updateShelf: PropTypes.func.isRequired
   };
 
+  emitChange(value) {
+    this.updateQuery(value);
+  }
+
+  handleChange(e) {
+    this.emitChangeDebounce(e.target.value);
+  }
 
   updateQuery = query => {
     this.setState({ query: query });
@@ -35,7 +48,7 @@ class Search extends Component {
   };
 
   render() {
-    const { searchedBooks, query } = this.state;
+    const { searchedBooks } = this.state;
     const { books, updateShelf } = this.props;
 
     return (
@@ -47,8 +60,7 @@ class Search extends Component {
           <div className="search-books-input-wrapper">
             <input
               type="text"
-              value={query}
-              onChange={event => this.updateQuery(event.target.value)}
+              onChange={this.handleChange}
               placeholder="Search by title or author"
             />
           </div>
@@ -56,7 +68,7 @@ class Search extends Component {
 
         <div className="search-books-results">
           <div className="books-grid">
-            { /*if searchedbooks is valid , iterate searchedbooks array using map method */ }
+            {/*if searchedbooks is valid , iterate searchedbooks array using map method */}
             {searchedBooks.length > 0 &&
               searchedBooks.map(book => (
                 <Book
@@ -68,7 +80,7 @@ class Search extends Component {
               ))}
           </div>
         </div>
-        <div/>
+        <div />
       </div>
     );
   }

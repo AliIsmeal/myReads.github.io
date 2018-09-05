@@ -51,7 +51,7 @@ class BooksApp extends React.Component {
           exact
           path="/"
           render={() => (
-            <ListOfBooks  books={books} updateShelf={this.updateShelf} />
+            <ListOfBooks books={books} updateShelf={this.updateShelf} />
           )}
         />
 
