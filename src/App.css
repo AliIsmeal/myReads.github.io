@@ -33,13 +33,8 @@ body,
   padding: 0 10px 20px;
 }
 
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
-}
-
 .bookshelf-title {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   border-bottom: 1px solid #dedede;
 }
 .bookshelf-books {
@@ -66,19 +61,20 @@ body,
 }
 
 /* search page */
-
+.search-books {
+  min-height: 100vh;
+}
 .search-books-bar {
-  position: fixed;
+  position: relative;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 5;
   display: flex;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+  border: 1px solid #472817;
 }
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
 }
 .search-books-bar input {
   width: 100%;
@@ -178,21 +174,35 @@ body,
 }
 
 .header {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   overflow: hidden;
-  background: linear-gradient(to bottom, #ff7b00 0%, #916c5a 100%);
-  padding: 20px 20px;
+  background: linear-gradient(to bottom, #007175 0%, #286337 100%);
+  /* background: linear-gradient(to bottom, #ff7b00 0%, #916c5a 100%);*/
+  padding: 15px 15px;
   text-align: center;
   color: white;
 }
 
 .footer {
-  left: 0;
-  bottom: 0;
+  position: relative;
+
   width: 100%;
-  background-color: #916c5a;
+  background-color: #007175;
   color: white;
   text-align: center;
   padding: 10px;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    max-height: 150px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .bookshelf {
+    padding: 0 20px 40px;
+  }
 }
